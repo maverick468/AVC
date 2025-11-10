@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FTA AVC International Club</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #8b0000, #000428);
+      color: #f5f5f5;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* === Logo === */
+    .nav-logo img {
+      height: 45px;
+      width: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    /* === Navbar Links === */
+    nav a {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, #ffb700, #ff4d4d);
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* === Glow effects === */
+    .glow-text {
+      text-shadow: 0 0 8px rgba(255, 230, 150, 0.3);
+    }
+    .glow-btn {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+      transition: all 0.3s ease;
+    }
+    .glow-btn:hover {
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+      transform: scale(1.05);
+    }
+
+    /* === Slideshow animation === */
+    .fade {
+      opacity: 0;
+      position: absolute;
+      inset: 0;
+      animation: fadeShow 25s infinite;
+    }
+
+    .fade:nth-child(1) { animation-delay: 0s; }
+    .fade:nth-child(2) { animation-delay: 5s; }
+    .fade:nth-child(3) { animation-delay: 10s; }
+    .fade:nth-child(4) { animation-delay: 15s; }
+    .fade:nth-child(5) { animation-delay: 20s; }
+
+    @keyframes fadeShow {
+      0% { opacity: 0; }
+      5% { opacity: 1; }
+      20% { opacity: 1; }
+      25% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* === Updated Intro Loader === */
+    #intro {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #0b001f 0%, #300000 70%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 1.5s ease;
+    }
+
+    .intro-logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 1s ease;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+    }
+
+    .intro-text {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
+      margin-top: 20px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 1s ease 0.5s;
+    }
+
+    .intro-show .intro-logo {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .intro-show .intro-text {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    /* === Animation on scroll === */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease;
+    }
+    [data-animate].active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === Responsive Navbar === */
+    @media (max-width: 768px) {
+      #nav-menu {
+        display: none;
+        flex-direction: column;
+        background: rgba(0,0,0,0.9);
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        border-radius: 1px;
+        padding: 15px;
+      }
+      #nav-menu.show {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-sans text-gray-100 min-h-screen relative">
+
+  <!-- INTRO (Updated for one-time show + smooth animation) -->
+  <div id="intro">
+    <img src="Black and White Illustration Movie Review Instagram Post (2).png" alt="AVC Logo" class="intro-logo" />
+    <div class="intro-text">Welcome to AVC</div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="bg-black/40 backdrop-blur-md text-white py-4 shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center px-6 relative">
+      <div class="nav-logo flex items-center gap-2">
+        <img src="Black and White Illustration Movie Review Instagram Post (1).png" alt="AVC Logo">
+        <h1 class="text-xl sm:text-2xl font-bold glow-text">FTA AVC CLUB</h1>
+      </div>
+
+      <!-- Menu button -->
+      <button id="menu-btn" class="md:hidden text-yellow-400 text-3xl">&#9776;</button>
+
+      <!-- Navigation links -->
+      <nav id="nav-menu" class="space-x-6 text-lg md:flex md:static md:bg-transparent md:flex-row md:space-x-6">
+        <a href="#sessions" class="block py-2">Sessions</a>
+        <a href="#bod" class="block py-2">BOD</a>
+        <a href="#contact" class="block py-2">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative w-full h-[80vh] overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="1.jpg" class="fade object-cover w-full h-full" />
+      <img src="2.jpg" class="fade object-cover w-full h-full" />
+      <img src="3.jpg" class="fade object-cover w-full h-full" />
+      <img src="4.jpg" class="fade object-cover w-full h-full" />
+      <img src="5.jpg" class="fade object-cover w-full h-full" />
+    </div>
+    <div class="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center px-4">
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 glow-text tracking-wide">AVC INTERNATIONAL CLUB</h2>
+      <p class="text-base sm:text-lg md:text-xl mb-8 max-w-2xl text-gray-200">
+        Academically Validated Community — Where 
+        <span class="text-yellow-400 font-semibold">Academics</span>, 
+        <span class="text-yellow-400 font-semibold">AI</span>, and 
+        <span class="text-yellow-400 font-semibold">Scholastics</span> meet global innovation.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#registration" class="bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold glow-btn">Register Now</a>
+        <a href="#contact" class="bg-white/90 text-red-700 px-8 py-3 rounded-full font-semibold glow-btn">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SESSIONS -->
+  <section id="sessions" class="py-20 text-center backdrop-blur-md">
+    <div class="container mx-auto px-6">
+      <h3 class="text-4xl font-bold mb-12 glow-text" data-animate>Our Sessions</h3>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
+        <div class="bg-white/10 p-8 rounded-2xl shadow-xl hover:bg-white/20 transition backdrop-blur-sm" data-animate>
+          <h4 class="text-2xl font-semibold text-yellow-300 mb-3">Academic Session</h4>
+          <p class="text-gray-200">Tutoring, advising, and mentorship with a global perspective to strengthen academic excellence.</p>
+        </div>
+        <div class="bg-white/10 p-8 rounded-2xl shadow-xl hover:bg-white/20 transition backdrop-blur-sm" data-animate>
+          <h4 class="text-2xl font-semibold text-yellow-300 mb-3">AI Session</h4>
+          <p class="text-gray-200">Learn Artificial Intelligence — from basics to real-world innovation and future technologies.</p>
+        </div>
+        <div class="bg-white/10 p-8 rounded-2xl shadow-xl hover:bg-white/20 transition backdrop-blur-sm" data-animate>
+          <h4 class="text-2xl font-semibold text-yellow-300 mb-3">Scholastic Session</h4>
+          <p class="text-gray-200">SAT prep, essay writing, and intellectual development for international competitiveness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOD -->
+  <section id="bod" class="py-20 text-center backdrop-blur-md">
+    <div class="container mx-auto px-6">
+      <h3 class="text-4xl font-bold mb-12 glow-text" data-animate>Board of Directors</h3>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
+        <div class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition shadow-md" data-animate>
+          <h4 class="text-xl font-semibold text-yellow-400">Brook Abenet</h4>
+          <p class="text-gray-300">Head of Academics</p>
+        </div>
+        <div class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition shadow-md" data-animate>
+          <h4 class="text-xl font-semibold text-yellow-400">Ezana Samson</h4>
+          <p class="text-gray-300">Head of AI</p>
+        </div>
+        <div class="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition shadow-md" data-animate>
+          <h4 class="text-xl font-semibold text-yellow-400">Arsema Gezahegn</h4>
+          <p class="text-gray-300">Head of Scholastic</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTRATION -->
+  <section id="registration" class="py-20 text-center text-white backdrop-blur-md">
+    <h3 class="text-4xl font-bold mb-6 glow-text" data-animate>Join AVC International Club</h3>
+    <p class="text-lg text-gray-300 mb-8">Be part of an intellectually vibrant and globally connected student community.</p>
+    <a href="reg.html" target="_blank" class="bg-yellow-400 text-black px-10 py-3 rounded-full font-semibold glow-btn">Open Registration Form</a>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20 text-center text-white backdrop-blur-md">
+    <h3 class="text-4xl font-bold mb-6 glow-text" data-animate>Contact Us</h3>
+    <p class="mb-4">Have questions or want to collaborate?</p>
+    <p>Telegram: <a href="https://t.me/+L9aUm10TsZUyMDg8" class="underline text-yellow-400 hover:text-yellow-300">Join Channel</a></p>
+    <p>Phone: <a href="tel:+251903204603" class="ml-1 underline text-yellow-400 hover:text-yellow-300">+251-903-204-603</a></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black/60 text-white py-6 text-center text-sm">
+    © 2025 FTA AVC Club — Academically Validated Community. All Rights Reserved.
+  </footer>
+
+  <!-- JS for menu + scroll + intro -->
+  <script>
+    // Scroll animation
+    const animatedElements = document.querySelectorAll('[data-animate]');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.2 });
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menu-btn');
+    const navMenu = document.getElementById('nav-menu');
+    menuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    // Intro logic (one-time display)
+    const intro = document.getElementById("intro");
+    const logo = document.querySelector(".intro-logo");
+    const text = document.querySelector(".intro-text");
+    const introShown = localStorage.getItem("introShown");
+
+    if (introShown) {
+      intro.style.display = "none";
+    } else {
+      window.addEventListener("load", () => {
+        setTimeout(() => intro.classList.add("intro-show"), 200);
+        setTimeout(() => {
+          intro.style.animation = "fadeOut 1.5s ease forwards";
+          localStorage.setItem("introShown", "true");
+        }, 3500);
+      });
+    }
+  </script>
+</body>
+</html>

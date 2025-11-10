@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AVC Global Registration</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #b30000 0%, #000033 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      padding: 1rem;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .form-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 1.5rem;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      width: 100%;
+      max-width: 720px;
+      animation: float 6s ease-in-out infinite;
+      transition: all 0.3s ease;
+    }
+
+    .glow-text {
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.3),
+                   0 0 25px rgba(255, 200, 0, 0.3);
+    }
+
+    .glow-input, .glow-select {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid transparent;
+      border-image: linear-gradient(to right, #ffcc00, #ff0000, #3300ff);
+      border-image-slice: 1;
+      color: white;
+      border-radius: 0.75rem;
+      padding: 0.9rem 1rem;
+      width: 100%;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .glow-input:focus, .glow-select:focus {
+      outline: none;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2),
+                  0 0 10px rgba(255, 200, 0, 0.3);
+      transform: scale(1.02);
+    }
+
+    .glow-btn {
+      background: linear-gradient(90deg, #ffcc00, #ff0000, #3300ff);
+      background-size: 200%;
+      color: white;
+      font-weight: bold;
+      border-radius: 9999px;
+      padding: 0.9rem 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.4s;
+      animation: glow 3s linear infinite;
+    }
+
+    @keyframes glow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glow-btn:hover {
+      transform: scale(1.08);
+    }
+
+    .option-card {
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 1rem;
+      padding: 1rem;
+      text-align: center;
+      transition: all 0.3s;
+      background: rgba(255,255,255,0.05);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .option-card:hover {
+      border-color: #ffcc00;
+      background: rgba(255,255,255,0.15);
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+
+    input[type="checkbox"]:checked + .option-card {
+      background: linear-gradient(90deg, #ffcc00, #ff0000, #3300ff);
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 20px rgba(255,255,255,0.4);
+      border: none;
+    }
+
+    label {
+      font-size: 0.9rem;
+      color: #ccc;
+      font-weight: 500;
+    }
+
+    /* === Responsive Tweaks === */
+    @media (max-width: 768px) {
+      .form-card {
+        padding: 1.5rem;
+        border-radius: 1rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .glow-btn {
+        width: 100%;
+      }
+
+      .option-card {
+        font-size: 0.85rem;
+        padding: 0.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .form-card {
+        padding: 1rem;
+      }
+
+      .glow-input, .glow-select {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+      }
+
+      .option-card {
+        font-size: 0.8rem;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="form-container" class="form-card">
+    <h1 class="text-4xl font-bold text-center mb-6 glow-text">AVC Global Registration</h1>
+    <p class="text-center text-gray-300 mb-8">Join the <span class="text-yellow-400 font-semibold">Academically Validated Community</span> — where global learners connect and grow!</p>
+
+    <form id="avcForm" action="https://formspree.io/f/mldaeewa" method="POST" class="space-y-6">
+
+      <div>
+        <label class="block mb-2">Full Name</label>
+        <input type="text" id="fullname" name="Full Name" required class="glow-input" placeholder="Your full name">
+      </div>
+
+      <div>
+        <label class="block mb-2">Telegram Username or Phone Number (For sending Certificate)</label>
+        <input type="text" name="Telegram" required class="glow-input" placeholder="@yourusername">
+      </div>
+
+      <div>
+        <label class="block mb-3 text-lg font-semibold text-yellow-300">Choose Sessions You Want (Can choose more than one)</label>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label><input type="checkbox" name="Session[]" value="AI Session" class="hidden peer"><div class="option-card">🤖 AI Session</div></label>
+          <label><input type="checkbox" name="Session[]" value="SAT Training" class="hidden peer"><div class="option-card">📘 SAT Training</div></label>
+          <label><input type="checkbox" name="Session[]" value="Academic Tutoring" class="hidden peer"><div class="option-card">📚 Academic Session</div></label>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block mb-2">Class</label>
+          <input type="text" name="Class" required class="glow-input" placeholder="e.g. Grade 11">
+        </div>
+        <div>
+          <label class="block mb-2">Section</label>
+          <input type="text" name="Section" required class="glow-input" placeholder="e.g. B">
+        </div>
+      </div>
+
+      <div>
+        <label class="block mb-3 text-lg font-semibold text-yellow-300">Days You Are Free (Out of club)</label>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+          <label><input type="checkbox" name="Free Days[]" value="Monday" class="hidden peer"><div class="option-card">Mon</div></label>
+          <label><input type="checkbox" name="Free Days[]" value="Tuesday" class="hidden peer"><div class="option-card">Tue</div></label>
+          <label><input type="checkbox" name="Free Days[]" value="Wednesday" class="hidden peer"><div class="option-card">Wed</div></label>
+          <label><input type="checkbox" name="Free Days[]" value="Thursday" class="hidden peer"><div class="option-card">Thu</div></label>
+          <label><input type="checkbox" name="Free Days[]" value="Friday" class="hidden peer"><div class="option-card">Fri</div></label>
+        </div>
+      </div>
+
+      <div>
+        <label class="block mb-2">Sex</label>
+        <select name="Sex" required class="glow-select text-black">
+          <option value="" disabled selected>Select</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block mb-2">Last Year School Average (%)</label>
+        <input type="number" name="School Average" required class="glow-input" placeholder="e.g. 87" min="0" max="100">
+      </div>
+
+      <div>
+        <label class="block mb-2">SAT Score (if taken)</label>
+        <input type="number" name="SAT Score" class="glow-input" placeholder="e.g. 1400">
+      </div>
+
+      <div class="text-center mt-8">
+        <button type="submit" class="glow-btn">Submit Registration</button>
+      </div>
+    </form>
+
+    <p class="text-center text-gray-400 mt-8 text-sm">
+      <a href="index.html" class="underline hover:text-yellow-400 transition">← Back to Home</a>
+    </p>
+  </div>
+
+  <script>
+    const form = document.getElementById('avcForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const fullName = formData.get('Full Name');
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          document.getElementById('form-container').innerHTML = `
+            <div class="text-center space-y-6">
+              <h1 class="text-4xl font-bold glow-text">Thank You, ${fullName}!</h1>
+              <p class="text-lg text-gray-200">🎉 Your registration has been successfully submitted to the AVC Global Team.</p>
+              <p class="text-gray-400">We’ll contact you soon via Telegram with more details.</p>
+              <a href="index.html" class="glow-btn inline-block mt-6">Back to Home</a>
+            </div>
+          `;
+        } else {
+          alert("Oops! There was a problem submitting your form. Please try again.");
+        }
+      } catch (error) {
+        alert("Network error! Please try again later.");
+      }
+    });
+  </script>
+
+</body>
+</html>
